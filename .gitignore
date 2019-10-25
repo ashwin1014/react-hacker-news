@@ -8,4 +8,4 @@ dist
 .DS_Store
 
 # Ignore firebase config
-# /src/firebase/config.js
+config

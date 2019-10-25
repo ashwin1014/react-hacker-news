@@ -23,11 +23,28 @@ const LinkItem = ({ link, index, showCount, history }) => {
     }
   };
 
-  const handleKeyPress = event => {
+  const handleDeleteLink = () => {
+    const linkRef = firebase.db.collection('links').doc(link.id);
+    linkRef
+      .delete()
+      .then(() => {
+        // eslint-disable-next-line no-console
+        console.log(`Document with ID ${link.id} deleted`);
+      })
+      .catch(err => {
+        // eslint-disable-next-line no-console
+        console.error(err);
+      });
+  };
+
+  const handleKeyPress = (event, type) => {
     if (event.key === 'Enter') {
-      handleVote();
+      if (type === 'vote') handleVote();
+      if (type === 'del') handleDeleteLink();
     }
   };
+
+  const postedByAuthUser = user && user.uid === link.postedBy.id;
 
   return (
     <div className='flex items-start mt2'>
@@ -36,7 +53,7 @@ const LinkItem = ({ link, index, showCount, history }) => {
         <div
           className='vote-button pointer'
           onClick={handleVote}
-          onKeyPress={handleKeyPress}
+          onKeyPress={e => handleKeyPress(e, 'vote')}
           role='button'
           tabIndex={0}
         >
@@ -55,6 +72,20 @@ const LinkItem = ({ link, index, showCount, history }) => {
             ? `${link.comments.length} comments`
             : 'discuss'}
         </Link>
+        {postedByAuthUser && (
+          <>
+            |
+            <span
+              className='delete-button'
+              onClick={handleDeleteLink}
+              onKeyPress={e => handleKeyPress(e, 'del')}
+              role='button'
+              tabIndex={0}
+            >
+              delete
+            </span>
+          </>
+        )}
       </div>
     </div>
   );
