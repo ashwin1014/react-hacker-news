@@ -1,40 +1,37 @@
-import React, {useState, useEffect} from 'react';
-
+import React, { useState } from 'react';
 
 const useFormValidation = (initialState, validate, authenticate) => {
-    const [values, setValues] = useState(initialState);
-    const [errors, setErrors] = useState({});
-    const [isSubmitting, setSubmitting] = useState(false);
+  const [values, setValues] = useState(initialState);
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setSubmitting] = useState(false);
 
-    useEffect(() => {
-        if(isSubmitting) {
-          const noErrors = Object.keys(errors).length === 0;
-          if(noErrors) {
-            // console.log('authenticated', values );
-            authenticate();
-            setSubmitting(false);
-          } else {
-            setSubmitting(false);
-          }
-        }
+  React.useEffect(() => {
+    if (isSubmitting) {
+      const noErrors = Object.keys(errors).length === 0;
+      if (noErrors) {
+        authenticate();
+        setSubmitting(false);
+      } else {
+        setSubmitting(false);
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [errors]);
+  }, [errors]);
 
-    const handleChange = (event) => {
+  const handleChange = event => {
     event.persist();
     setValues(prevState => ({
       ...prevState,
       [event.target.name]: event.target.value
-    }))
-    };
+    }));
+  };
 
-    const handleBlur = () => {
-        const validationErrors = validate(values);
-        setErrors(validationErrors);
-    };
-    
+  const handleBlur = () => {
+    const validationErrors = validate(values);
+    setErrors(validationErrors);
+  };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     const validationErrors = validate(values);
     setErrors(validationErrors);
@@ -42,7 +39,14 @@ const useFormValidation = (initialState, validate, authenticate) => {
     // console.log({values});
   };
 
-    return { handleSubmit, handleChange, values, handleBlur, errors, isSubmitting }
+  return {
+    handleSubmit,
+    handleChange,
+    values,
+    handleBlur,
+    errors,
+    isSubmitting
+  };
 };
 
 export default useFormValidation;

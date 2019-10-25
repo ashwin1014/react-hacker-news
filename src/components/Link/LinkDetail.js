@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-function LinkDetail(props) {
+const LinkDetail = () => {
   return <div>LinkDetail</div>;
-}
+};
 
 export default LinkDetail;

@@ -1,3 +1,20 @@
 {
-    "deepcode.review.results.hideInformationIssues": false
+  "deepcode.review.results.hideInformationIssues": false,
+  "cSpell.words": [
+    "Browserslist",
+    "Parens",
+    "blacktriangle",
+    "firestore",
+    "flexbox",
+    "linebreak",
+    "multiline",
+    "nbsp",
+    "plusplus",
+    "polyfill",
+    "precommit",
+    "snapshop",
+    "sourcemap",
+    "typeof",
+    "visualiser"
+  ]
 }
