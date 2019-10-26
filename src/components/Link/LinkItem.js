@@ -74,7 +74,7 @@ const LinkItem = ({ link, index, showCount, history }) => {
         </Link>
         {postedByAuthUser && (
           <>
-            |
+            &nbsp;|&nbsp;
             <span
               className='delete-button'
               onClick={handleDeleteLink}
