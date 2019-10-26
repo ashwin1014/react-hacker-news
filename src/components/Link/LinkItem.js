@@ -61,7 +61,10 @@ const LinkItem = ({ link, index, showCount, history }) => {
         </div>
       </div>
       <div className='ml1'>
-        {link.description} <span className='link'>({getDomain(link.url)})</span>
+        <a href={link.url} className='black no-underline'>
+          {link.description}
+        </a>{' '}
+        <span className='link'>({getDomain(link.url)})</span>
       </div>
       <div className='f6 lg-copy gray'>
         &nbsp;{link.votes.length} votes by {link.postedBy.name}{' '}
