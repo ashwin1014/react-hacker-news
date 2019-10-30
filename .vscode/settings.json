@@ -15,6 +15,7 @@
     "plusplus",
     "polyfill",
     "precommit",
+    "setcursor",
     "snapshop",
     "sourcemap",
     "typeof",
