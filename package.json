@@ -60,7 +60,7 @@
     "node-sass": "^4.12.0",
     "parcel-bundler": "latest",
     "parcel-plugin-bundle-visualiser": "^1.2.0",
-    "yarn": "^1.19.1"
+    "yarn": "^1.22.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
